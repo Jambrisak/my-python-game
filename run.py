@@ -59,3 +59,9 @@ turns = 10
 while turns > 0:
     print('Welcome to Battleship')
     print_board(GUESS_BOARD)
+    row, column = get_ship_location()
+    if GUESS_BOARD[row][column] == '-':
+        print('You have already guessed that')
+    elif HIDDEN_BOARD[row][column] == 'X':
+        print('Congratulations, you have hit the battleship')
+        GUESS_BOARD[row][column] = 'X'
