@@ -9,9 +9,13 @@ from random import randint
 #The different boards
 #Hidden board will hold the ships
 #Guess board will hold hits or misses
-HIDDEN_BOARD = [[" "] * 8 for x in range(8)]
-GUESS_BOARD = [[" "] * 8 for i in range(8)]
+PLAYER_BOARD = [[" "] * 8 for x in range(8)]
+COMPUTER_BOARD = [[" "] * 8 for i in range(8)]
+PLAYER_GUESS_BOARD = [[" "] * 8 for x in range(8)]
+COMPUTER_GUESS_BOARD = [[" "] * 8 for x in range(8)]
 
+#The length of the ships
+LENGTH_OF_SHIPS = [2,3,3,4,5]
 #A way to convert letters to numbers
 letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
 
