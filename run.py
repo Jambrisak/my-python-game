@@ -101,7 +101,15 @@ def user_input():
                 if row in '12345678':
                     row = int(row) - 1
                     break
-
+        while True:
+            try: 
+                column = input("Enter the column of the ship: ").upper()
+                if column in 'ABCDEFGH':
+                    column = LETTERS_TO_NUMBERS[column]
+                    break
+            except KeyError:
+                print('Enter a valid letter between A-H')
+        return row, column, orientation 
 #function to check if ships took a hit
 def count_hit_ships():
     pass
