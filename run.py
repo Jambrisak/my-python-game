@@ -26,57 +26,57 @@ def print_the_game_board(board):
 
 #function to place the ships
 def placements_of_the_ships(board):
-    for ship_length in the_different_ships:
+    for the_ships_length in the_different_ships:
         while True:
             if board == the_computers_board:
                 orientation, row, column = random.choice(["H", "V"]), random.randint(0,7), random.randint(0,7)
-                if does_ship_fit(ship_length, row, column, orientation):
-                    #check if the ships overlaps
-                    if does_the_ship_overlap(board, row, column, orientation, ship_length) == False:
+                if does_ship_fit(the_ships_length, row, column, orientation):
+                    #check if any of the ships overlaps
+                    if does_the_ship_overlap(board, row, column, orientation, the_ships_length) == False:
                         if orientation == "H":
-                            for i in range(column, column + ship_length):
+                            for i in range(column, column + the_ships_length):
                                 board[row][i] = "X"
                         else:
-                            for i in range(row, row + ship_length):
+                            for i in range(row, row + the_ships_length):
                                 board[i][column] = "X"
                         break
             else:
                 place_ship = True
-                print('Place the ship with a length of ' + str(ship_length))
+                print('Place the ship with a length of ' + str(the_ships_length))
                 row, column, orientation = the_players_input(place_ship)
-                if does_ship_fit(ship_length, row, column, orientation):
-                    #check if the ships overlaps
-                        if does_the_ship_overlap(board, row, column, orientation, ship_length) == False:
+                if does_ship_fit(the_ships_length, row, column, orientation):
+                    #check if any of the ships overlaps
+                        if does_the_ship_overlap(board, row, column, orientation, the_ships_length) == False:
                             if orientation == "H":
-                                for i in range(column, column + ship_length):
+                                for i in range(column, column + the_ships_length):
                                     board[row][i] = "X"
                             else:
-                                for i in range(row, row + ship_length):
+                                for i in range(row, row + the_ships_length):
                                     board[i][column] = "X"
                             print_the_game_board(the_players_board)
                             break 
 
 #function to check if ship fits
-def does_ship_fit(SHIP_LENGTH, row, column, orientation):
+def does_ship_fit(the_ships_length, row, column, orientation):
     if orientation == "H":
-        if column + SHIP_LENGTH > 8:
+        if column + the_ships_length > 8:
             return False
         else:
             return True
     else:
-        if row + SHIP_LENGTH > 8:
+        if row + the_ships_length > 8:
             return False
         else: 
             return True
 
 #function to check if ships overlaps
-def does_the_ship_overlap(board, row, column, orientation, ship_length):
+def does_the_ship_overlap(board, row, column, orientation, the_ships_length):
     if orientation == "H":
-        for i in range(column, column + ship_length):
+        for i in range(column, column + the_ships_length):
             if board[row][i] == "X":
                 return True
     else:
-        for i in range(row, row + ship_length):
+        for i in range(row, row + the_ships_length):
             if board[i][column] == "X":
                 return True
     return False
@@ -86,11 +86,11 @@ def the_players_input(place_ship):
     if place_ship == True:
         while True:
             try: 
-                orientation = input("Enter orientation (H or V): ").upper()
+                orientation = input("Enter the direction (H or V): ").upper()
                 if orientation == "H" or orientation == "V":
                     break
             except TypeError:
-                print('Enter a valid orientation H or V')
+                print('Enter a valid direction H or V')
         while True:
             try: 
                 row = input("Enter the row 1-8 of the ship: ")
@@ -98,7 +98,7 @@ def the_players_input(place_ship):
                     row = int(row) - 1
                     break
             except ValueError:
-                print('Enter a valid letter between 1-8')
+                print('Enter a valid row number between 1-8')
         while True:
             try: 
                 column = input("Enter the column of the ship: ").upper()
@@ -106,17 +106,17 @@ def the_players_input(place_ship):
                     column = convert_Letters_to_numbers[column]
                     break
             except KeyError:
-                print('Enter a valid letter between A-H')
+                print('Enter a valid column letter between A-H')
         return row, column, orientation 
     else:
         while True:
             try: 
-                row = input("Enter the row 1-8 of the ship: ")
+                row = input("Enter the row number 1-8 of the ship: ")
                 if row in '12345678':
                     row = int(row) - 1
                     break
             except ValueError:
-                print('Enter a valid letter between 1-8')
+                print('Enter a valid row number between 1-8')
         while True:
             try: 
                 column = input("Enter the column of the ship: ").upper()
@@ -124,7 +124,7 @@ def the_players_input(place_ship):
                     column = convert_Letters_to_numbers[column]
                     break
             except KeyError:
-                print('Enter a valid letter between A-H')
+                print('Enter a valid column letter between A-H')
         return row, column 
 
 #function to check if ships took a hit
@@ -169,17 +169,17 @@ placements_of_the_ships(the_players_board)
 #While loop for the player and computer turns
 while True:
     while True:
-        print('Guess a battleship location')
+        print('You need to guess a ships placement')
         print_the_game_board(the_players_guesses)
         game_turn(the_players_guesses)
         break
     if how_many_hits_on_ship(the_players_guesses) == 17:
-        print("you Win!")
+        print("Congratulations you won")
         break
     while True:
         game_turn(the_computers_guesses)
         break
     print_the_game_board(the_players_guesses)
     if how_many_hits_on_ship(the_computers_guesses) == 17:
-        print("Sorry, the computer won.")
+        print("I'm sorry the computer won")
         break
