@@ -23,4 +23,8 @@ def get_ship_location():
 def count_hit_ships():
     pass
 
+#The start of the game
+create_ships()
+turns = 10
+while turns > 0:
 
