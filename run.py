@@ -73,3 +73,7 @@ while turns > 0:
     if count_hit_ships(GUESS_BOARD) == 5:
         print('Congratulations, you have sunk all the battleships')
         break
+    print('You have ' + str(turns) + ' turns remaining')
+    if turns == 0:
+        print('Game Over')
+        break
