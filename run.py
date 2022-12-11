@@ -37,8 +37,17 @@ def place_ships(board):
                 if check_ship_fit(ship_length, row, column, orientation):
 
 #function to check if ship fits
-def check_ship_fit():
-    pass
+def check_ship_fit(SHIP_LENGTH, row, column, orientation):
+    if orientation == "H":
+        if column + SHIP_LENGTH > 8:
+            return False
+        else
+            return True
+    else:
+        if row + SHIP_LENGTH > 8:
+            return False
+        else: 
+            return True
 
 #Function to create ships
 def create_ships(board):
