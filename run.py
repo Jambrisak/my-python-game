@@ -1,3 +1,6 @@
+#initial imports
+from random import randint
+
 #The different boards
 #Hidden board will hold the ships
 #Guess board will hold hits or misses
