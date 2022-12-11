@@ -45,11 +45,16 @@ def get_ship_location():
     return int(row) - 1, letters_to_numbers[column]
 
 #Function to count the hits a ship receives
-def count_hit_ships():
-    pass
+def count_hit_ships(board):
+    count = 0
+    for row in board:
+        for column in row:
+            if column == 'X':
+                count += 1
+    return count
 
 #The start of the game
 create_ships()
 turns = 10
-while turns > 0:
+#while turns > 0:
 
