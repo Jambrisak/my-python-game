@@ -1,8 +1,3 @@
-#Legend of what things are going to be
-#X for placing the ships and hit battleship
-# ' ' available for space
-# '-' for missed shot
-
 #initial imports
 import random
 
@@ -170,6 +165,7 @@ print_board(COMPUTER_BOARD)
 print_board(PLAYER_BOARD)
 place_ships(PLAYER_BOARD)
 
+#While loop for the player and computer turns
 while True:
     while True:
         print('Guess a battleship location')
