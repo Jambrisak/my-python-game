@@ -73,6 +73,21 @@ def check_ship_fit(SHIP_LENGTH, row, column, orientation):
         else: 
             return True
 
+#function to check if ships overlaps
+def ship_overlaps():
+    pass
+
+#function to check the users input
+def user_input():
+    pass
+
+#function to check if ships took a hit
+def count_hit_ships():
+    pass
+
+#function for the user and computers turn
+def turn():
+    pass
 #Function to create ships
 def create_ships(board):
     for ship in range(5):
