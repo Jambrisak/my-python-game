@@ -29,6 +29,8 @@ def create_ships():
     for ship in range(5):
         ship_row, ship_column = randint(0,7), randint(0,7)
         while board[ship_row][ship_column] == 'X':
+            ship_row, ship_column = randint(0,7), randint(0,7)
+        board[ship_row][ship_column] = 'X'
 
 #Function for getting the ships location
 def get_ship_location():
