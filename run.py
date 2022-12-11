@@ -1,5 +1,6 @@
 #initial imports
 import random
+from random import randint
 
 #The different boards
 #Hidden board will hold the ships
