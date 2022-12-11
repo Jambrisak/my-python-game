@@ -11,6 +11,11 @@ letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H
 def board():
     pass
 
+#Function to create ships
+def create_ships():
+    pass
+
 #Function for getting the ships location
 def get_ship_location():
     pass
+
