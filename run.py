@@ -87,7 +87,20 @@ def ship_overlaps():
 
 #function to check the users input
 def user_input():
-    pass
+    if place_ship == True:
+        while True:
+            try:
+                orientation = input("Enter orientation (H or V): ").upper()
+                if orientation == "H" or orientation == "V":
+                    break
+            except TypeError:
+                print('Enter a valid orientation H or V')
+        while True:
+            try:
+                row = input("Enter the row 1-8 of the ship:")
+                if row in '12345678':
+                    row = int(row) - 1
+                    break
 
 #function to check if ships took a hit
 def count_hit_ships():
