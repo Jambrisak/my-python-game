@@ -75,7 +75,15 @@ def check_ship_fit(SHIP_LENGTH, row, column, orientation):
 
 #function to check if ships overlaps
 def ship_overlaps():
-    pass
+    if orientation == "H":
+        for i in range (column, column + ship_length):
+            if board[row][i][column] == "X":
+                return True
+    else:
+        for i in range(row, row +ship_length):
+            if board[i][column] == "X":
+                return True
+    return False
 
 #function to check the users input
 def user_input():
