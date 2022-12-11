@@ -21,11 +21,7 @@ The computer and user will take ten turns to find all 4 of the ships, should all
 
 [Technologies Used](#technologies)
 
-[Testing](#testing)
-
 [Deployment](#deployment)
-
-[Known Bugs](#bugs)
 
 [Credits](#credits)
 
