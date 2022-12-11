@@ -152,7 +152,16 @@ def turn(board):
             board[row][column] = "X"
         else:
             board[row][column] = "-"
-
+    else:
+        row, column = random.randint(0,7), random.randint(0,7)
+        if board[row][column] == "-":
+            turn(board)
+        elif board[row][column] == "X":
+            turn(board)
+        elif PLAYER_BOARD[row][column] == "X":
+            board[row][column] = "X"
+        else:
+            board[row][column] = "-"
 
 #Function to create ships
 #def create_ships(board):
