@@ -65,3 +65,8 @@ while turns > 0:
     elif HIDDEN_BOARD[row][column] == 'X':
         print('Congratulations, you have hit the battleship')
         GUESS_BOARD[row][column] = 'X'
+        turns -= 1
+    else:
+        print('Sorry, you missed')
+        GUESS_BOARD[row][column] = '-'
+        turns -= 1
