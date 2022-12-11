@@ -4,7 +4,7 @@
 # '-' for missed shot
 
 #initial imports
-from random import randint
+import random
 
 #The different boards
 #Hidden board will hold the ships
@@ -107,7 +107,7 @@ def user_input(place_ship):
             try: 
                 column = input("Enter the column of the ship: ").upper()
                 if column in 'ABCDEFGH':
-                    column = LETTERS_TO_NUMBERS[column]
+                    column = letters_to_numbers[column]
                     break
             except KeyError:
                 print('Enter a valid letter between A-H')
@@ -125,7 +125,7 @@ def user_input(place_ship):
             try: 
                 column = input("Enter the column of the ship: ").upper()
                 if column in 'ABCDEFGH':
-                    column = LETTERS_TO_NUMBERS[column]
+                    column = letters_to_numbers[column]
                     break
             except KeyError:
                 print('Enter a valid letter between A-H')
@@ -163,7 +163,26 @@ def turn(board):
         else:
             board[row][column] = "-"
 
+
+#Calling the functions
 place_ships(COMPUTER_BOARD)
 print_board(COMPUTER_BOARD)
 print_board(PLAYER_BOARD)
 place_ships(PLAYER_BOARD)
+
+while True:
+    while True:
+        print('Guess a battleship location')
+        print_board(PLAYER_GUESS_BOARD)
+        turn(PLAYER_GUESS_BOARD)
+        break
+    if count_hit_ships(PLAYER_GUESS_BOARD) == 17:
+        print("you Win!")
+        break
+    while True:
+        turn(COMPUTER_GUESS_BOARD)
+        break
+    print_board(PLAYER_GUESS_BOARD)
+    if count_hit_ships(COMPUTER_GUESS_BOARD) == 17:
+        print("Sorry, the computer won.")
+        break
