@@ -74,33 +74,35 @@ def check_ship_fit(SHIP_LENGTH, row, column, orientation):
             return True
 
 #function to check if ships overlaps
-def ship_overlaps():
+def ship_overlaps(board, row, column, orientation, ship_length):
     if orientation == "H":
-        for i in range (column, column + ship_length):
-            if board[row][i][column] == "X":
+        for i in range(column, column + ship_length):
+            if board[row][i] == "X":
                 return True
     else:
-        for i in range(row, row +ship_length):
+        for i in range(row, row + ship_length):
             if board[i][column] == "X":
                 return True
     return False
 
 #function to check the users input
-def user_input():
-    if place_sship == True:
+def user_input(place_ship):
+    if place_ship == True:
         while True:
-            try:
+            try: 
                 orientation = input("Enter orientation (H or V): ").upper()
                 if orientation == "H" or orientation == "V":
                     break
             except TypeError:
                 print('Enter a valid orientation H or V')
         while True:
-            try:
-                row = input("Enter the row 1-8 of the ship:")
+            try: 
+                row = input("Enter the row 1-8 of the ship: ")
                 if row in '12345678':
                     row = int(row) - 1
                     break
+            except ValueError:
+                print('Enter a valid letter between 1-8')
         while True:
             try: 
                 column = input("Enter the column of the ship: ").upper()
@@ -109,7 +111,7 @@ def user_input():
                     break
             except KeyError:
                 print('Enter a valid letter between A-H')
-        return row, column, orientation
+        return row, column, orientation 
     else:
         while True:
             try: 
@@ -118,7 +120,7 @@ def user_input():
                     row = int(row) - 1
                     break
             except ValueError:
-                print('Enter a valid letter between 1-8') 
+                print('Enter a valid letter between 1-8')
         while True:
             try: 
                 column = input("Enter the column of the ship: ").upper()
@@ -130,7 +132,7 @@ def user_input():
         return row, column 
 
 #function to check if ships took a hit
-def count_hit_ships():
+def count_hit_ships(board):
     count = 0
     for row in board:
         for column in row:
@@ -139,8 +141,17 @@ def count_hit_ships():
     return count
 
 #function for the user and computers turn
-def turn():
-    pass
+def turn(board):
+    if board == PLAYER_GUESS_BOARD:
+        row, column = user_input(PLAYER_GUESS_BOARD)
+        if board[row][column] == "-":
+            turn(board)
+        elif board[row][column] == "X":
+            turn(board)
+        elif COMPUTER_BOARD[row][column] == "X":
+            board[row][column] = "X"
+        else:
+            board[row][column] = "-"
 
 
 #Function to create ships
