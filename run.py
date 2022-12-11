@@ -87,7 +87,7 @@ def ship_overlaps():
 
 #function to check the users input
 def user_input():
-    if place_ship == True:
+    if place_sship == True:
         while True:
             try:
                 orientation = input("Enter orientation (H or V): ").upper()
@@ -131,7 +131,12 @@ def user_input():
 
 #function to check if ships took a hit
 def count_hit_ships():
-    pass
+    count = 0
+    for row in board:
+        for column in row:
+            if column == "X":
+                count += 1
+    return count
 
 #function for the user and computers turn
 def turn():
