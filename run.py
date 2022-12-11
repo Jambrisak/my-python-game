@@ -19,3 +19,8 @@ def create_ships():
 def get_ship_location():
     pass
 
+#Function to count the hits a ship receives
+def count_hit_ships():
+    pass
+
+
